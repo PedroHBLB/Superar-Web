@@ -1,0 +1,74 @@
+.valHead {
+  margin-top: 2%;
+  margin-left: 1%;
+  display: flex;
+}
+.valPil {
+  width: 40%;
+  margin: 0;
+}
+.valEnvios {
+  margin: 0;
+  font-weight: bold;
+  display: flex;
+}
+.cardList {
+  margin-top: 2%;
+}
+
+.pageNav {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 2%;
+  margin-top: 1%;
+}
+.pageNav button {
+  transition: 0.3s;
+  border: 1px solid #aaa;
+  border-radius: 0.5em;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 1em;
+}
+.pageNav button:hover {
+  background-color: #7aa73d;
+}
+.dubArrow {
+  margin-right: 1em;
+  width: 3em;
+  height: 2em;
+  background: #e0e0e0;
+}
+.arrow {
+  width: 4em;
+  height: 2em;
+  background: #e0e0e0;
+}
+.pageNum {
+  margin-left: 1em;
+  width: 2em;
+  border: 1px solid #aaa;
+  border-radius: 0.5em;
+  font-weight: bold;
+  text-align: center;
+}
+.pageNumDisplay {
+  margin-left: -2.3em;
+  margin-top: 0.1em;
+  height: 2.4em;
+  width: 1.8em;
+  background: none;
+  border: none;
+  border-radius: 0.5em;
+  font-weight: bold;
+  text-align: center;
+}
+.pageNumDisplay:focus {
+  outline: none;
+  background: white;
+}
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
