@@ -21,6 +21,12 @@ pilMap.set("Conhecimento", {
     { key: "book", value: "Leitura de livro" },
   ],
 });
+pilMap.set("Inovacao", {
+  head: "da Inovacao",
+  vars: [
+    { key: "inovacao", value: "Inovacao"}
+  ]
+})
 
 interface vTab {
   valTab: string;
@@ -38,7 +44,8 @@ export function Validation({ valTab }: vTab) {
       const { data } = await api.get(
         valTab === "Saúde"
           ? `/pilares/saude/pendentes?_page=${pag}&limit=10`
-          : `/pilares/conhecimento/pendentes?_page=${pag}&limit=10`
+          : valTab === "Conhecimento" ? `/pilares/conhecimento/pendentes?_page=${pag}&limit=10`
+          : `/pilares/inovacao/pendentes?_page=${pag}&limit=10`
       );
       setInfo(data);
     } catch (error) {

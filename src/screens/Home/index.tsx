@@ -84,6 +84,12 @@ export function Home() {
               >
                 Conhecimento
               </button>
+              <button
+                className={val === "Inovacao" ? "activeSub" : "inactive"}
+                onClick={() => setVal("Inovacao")}
+              >
+                Inovacao
+              </button>
             </div>
           </div>
         )}

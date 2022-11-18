@@ -5,6 +5,7 @@ import OpenIco from "../../assets/arrow_open.svg";
 import ClosedIco from "../../assets/arrow_closed.svg";
 import { CardDropdownSaude } from "../CardDropdownSaude";
 import { CardDropdownConhecimento } from "../CardDropdownConhecimento";
+import { CardDropdownInovacao } from "../CardDropdownInovacao";
 
 import "./style.css";
 import { ptBR } from "date-fns/esm/locale";
@@ -69,7 +70,7 @@ export function Card({ post, vars, valTab, fetchPendencias }: CardProps) {
                 id={post.pilar.id}
                 fetchPendencias={fetchPendencias}
               />
-            ) : (
+            ) : valTab === "Conhecimento" ? (
               <CardDropdownConhecimento
                 categoriaExp={vars.map((item: any) => {
                   return post.categoria === item.key && item.value;
@@ -81,7 +82,14 @@ export function Card({ post, vars, valTab, fetchPendencias }: CardProps) {
                 pontuacao={post.pilar.pontuacao}
                 fetchPendencias={fetchPendencias}
               />
-            )}
+            ) :
+              <CardDropdownInovacao
+                categoria={post.categoria}
+                descricao={post.descricao}
+                id={post.pilar.id}
+                pontuacao={post.pilar.pontuacao}
+                fetchPendencias={fetchPendencias}
+              />}
           </div>
         )}
       </div>
