@@ -27,6 +27,13 @@ pilMap.set("Inovacao", {
     { key: "inovacao", value: "Inovacao"}
   ]
 })
+pilMap.set("Interno", {
+  head: "do Interno",
+  vars: [
+    { key: "rsi", value: "Rsi"},
+    { key: "wtt", value: "Wtt"}
+  ]
+})
 
 interface vTab {
   valTab: string;
@@ -45,7 +52,8 @@ export function Validation({ valTab }: vTab) {
         valTab === "Saúde"
           ? `/pilares/saude/pendentes?_page=${pag}&limit=10`
           : valTab === "Conhecimento" ? `/pilares/conhecimento/pendentes?_page=${pag}&limit=10`
-          : `/pilares/inovacao/pendentes?_page=${pag}&limit=10`
+          : valTab === "Inovacao" ? `/pilares/inovacao/pendentes?_page=${pag}&limit=10`
+          : `/pilares/interno/pendentes?_page=${pag}&limit=10`
       );
       setInfo(data);
     } catch (error) {
