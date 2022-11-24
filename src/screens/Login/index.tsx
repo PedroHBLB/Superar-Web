@@ -66,9 +66,6 @@ export function Login() {
           {/* <Link to="/home" className="submitLogin" onClick={LoginWeb}>
             <div>Sign in</div>
           </Link> */}
-          <Link to="/home" className="submitLogin" onClick={LoginWeb}>
-            <div>Sign in</div>
-          </Link>
           <input
             value="Sign in"
             type="submit"
