@@ -3,6 +3,7 @@ import { api } from "../../services/api";
 import Aceito from "../../assets/check_aceito.svg";
 import Rejeitado from "../../assets/check_rejeitado.svg";
 import { Files } from "../../dtos/Conhecimento";
+import Popup from "reactjs-popup";
 // import { Document, Page, pdfjs } from "react-pdf";
 
 import "./style.css";
@@ -70,6 +71,7 @@ export function CardDropdownConhecimento({
         {files?.map((file) => {
           return (
             <div key={file.id}>
+              
               {file.uri.includes(".pdf") ? (
                 <a href={file.uri} target="_blank">
                   <div className="cardPdf">
@@ -79,7 +81,31 @@ export function CardDropdownConhecimento({
                   </div>
                 </a>
               ) : (
-                <img className="cardImg" src={file.uri} alt="" />
+                <Popup
+                  trigger={
+                    <img 
+                      className="cardImg" 
+                      src={file.uri} 
+                      alt="" 
+                      loading="lazy"
+                    />
+                  }
+                  modal
+                  nested
+                  closeOnDocumentClick
+                  overlayStyle={{
+                    backgroundColor: "rgba(0, 0, 0, 0.9)",
+                  }}
+                >
+                {(close: any) => (
+                  <>
+                    <span className="close" onClick={close}>
+                      &times;
+                    </span>
+                    <img className="modal-img" src={file.uri} alt="" loading="lazy"/>
+                  </>
+                )}
+                </Popup>
               )}
             </div>
           );
