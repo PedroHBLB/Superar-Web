@@ -33,7 +33,7 @@ export function CardDropdownInterno({
     try {
       await api.put(`/pilares/interno/pendente/${id}`, {
         status: status,
-        categoria: categoria,
+        categoria: "donate",
         justificativa: justificativa,
       });
       fetchPendencias();
@@ -45,7 +45,7 @@ export function CardDropdownInterno({
   return (
     <div className="cardContent">
       <div className="cardText">
-        <p className="categoria">Categoria: {categoriaExp}</p>
+        <p className="categoria">Categoria: RSI</p>
         <p className="textoEnvio">{descricao}</p>
       </div>
       <div className="cardImgs">

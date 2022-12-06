@@ -11,7 +11,6 @@ pilMap.set("Saúde", {
     { key: "alimentacao", value: "Alimentação saudavel" },
     { key: "exercicio", value: "Exercício físico" },
     { key: "exercise", value: "Exercício físico2" },
-    { key: "donate", value: "Doação" },
   ],
 });
 pilMap.set("Conhecimento", {
@@ -28,10 +27,9 @@ pilMap.set("Inovacao", {
   ]
 })
 pilMap.set("Interno", {
-  head: "do Interno",
+  head: "do interno",
   vars: [
-    { key: "rsi", value: "Rsi"},
-    { key: "wtt", value: "Wtt"}
+    { key: "donate", value: "Doação"},
   ]
 })
 
@@ -52,8 +50,8 @@ export function Validation({ valTab }: vTab) {
         valTab === "Saúde"
           ? `/pilares/saude/pendentes?_page=${pag}&limit=10`
           : valTab === "Conhecimento" ? `/pilares/conhecimento/pendentes?_page=${pag}&limit=10`
-          : valTab === "Inovacao" ? `/pilares/inovacao/pendentes?_page=${pag}&limit=10`
-          : `/pilares/interno/pendentes?_page=${pag}&limit=10`
+          : valTab === "Interno" ? `/pilares/interno/pendentes?_page=${pag}&limit=10`
+          : `/pilares/inovacao/pendentes?_page=${pag}&limit=10`
       );
       setInfo(data);
     } catch (error) {

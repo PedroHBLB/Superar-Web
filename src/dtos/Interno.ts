@@ -1,8 +1,8 @@
 export interface Interno {
-    categoria: string;
     id: string;
+    nome: string;
     descricao: string;
-    photos: Photo[];
+    comprovante: Photo[];
     pilar: Pilar;
   }
   

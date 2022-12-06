@@ -94,11 +94,10 @@ export function Card({ post, vars, valTab, fetchPendencias }: CardProps) {
             ): (
               <CardDropdownInterno
                 categoriaExp={vars.map((item: any) => {
-                  return post.categoria === item.key && item.value;
+                  return post.nome === item.key && item.value;
                 })}
-                categoria={post.categoria}
+                categoria={post.nome}
                 descricao={post.descricao}
-                // photos={imgArray}
                 comprovante={post.comprovante}
                 id={post.pilar.id}
                 fetchPendencias={fetchPendencias}
