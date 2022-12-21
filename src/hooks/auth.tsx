@@ -6,12 +6,14 @@ import React, {
   useEffect,
 } from "react";
 import Cookies from "universal-cookie";
+import { format } from "date-fns"; 
 import { useHistory } from "react-router-dom";
 import { api } from "../services/api";
 import { Colaborador } from "../dtos/ColaboradorDTO";
 
 interface AuthContextData {
   colaborador: Colaborador;
+  ranking: OwnRankingProps;
   LoadCookie: () => void;
   SignIn: (credentials: SignInCredentials) => Promise<void>;
   SignOut: () => void;
@@ -23,10 +25,15 @@ interface SignInCredentials {
 interface AuthProviderProps {
   children: ReactNode;
 }
+interface OwnRankingProps {
+  pos: number;
+  pontuacao_do_mes: number;
+}
 const AuthContext = createContext<AuthContextData>({} as AuthContextData);
 
 function AuthProvider({ children }: AuthProviderProps) {
   const [user, setUser] = useState<Colaborador>({} as Colaborador);
+  const [ranking, setRanking] = useState<OwnRankingProps>({} as OwnRankingProps);
   const cookies = new Cookies();
   const history = useHistory();
 
@@ -69,8 +76,30 @@ function AuthProvider({ children }: AuthProviderProps) {
     colaborador && history.push("/home");
     setUser(colaborador);
   }
+
+  const fetchOwnRanking = async () => {
+    const currentMonth = format(new Date(), "M");
+
+    try {
+      const { data } = await api.get(
+        `colaborador/ranking?redirect_month=${currentMonth}`
+      );
+      const newRanking: OwnRankingProps = {
+        pos: data.pos,
+        pontuacao_do_mes: data.pontuacao_do_mes,
+      };
+
+      setRanking(newRanking);
+    }catch(e: any){
+      throw new Error(e);
+    }
+  }
+
+
   useEffect(() => {
+    // eslint-disable-next-line
     LoadCookie();
+    fetchOwnRanking();
   }, []);
   return (
     <AuthContext.Provider
@@ -78,13 +107,16 @@ function AuthProvider({ children }: AuthProviderProps) {
         colaborador: user,
         LoadCookie,
         SignIn,
-        // SignUp,
+        ranking,
+        //SignUp,
         SignOut,
       }}
     >
       {children}
     </AuthContext.Provider>
   );
+
+
 }
 
 function useAuth(): AuthContextData {

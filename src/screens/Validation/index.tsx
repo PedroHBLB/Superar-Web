@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Card } from "../../components/Card";
 // import { Saude } from "../../dtos/Saude";
 import { api } from "../../services/api";
+import { Search } from '../../components/Search';
 import "./style.css";
 
 let pilMap = new Map();
