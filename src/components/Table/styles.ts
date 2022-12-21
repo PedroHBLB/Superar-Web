@@ -13,7 +13,6 @@ export const Container = styled.div`
         padding: 15px;
         background-color: rgba(255,255,255,0.2);
         color: #fff;
-        cursor: pointer;
     }
     
     th {
@@ -33,11 +32,10 @@ export const Container = styled.div`
             }
         }
         td {
+            cursor: pointer;
             position: relative;
             transition: all 0.25s ease-out;
             &:hover {
-                transform: scale(1.05);
-                background-color: '#fff';
                 &:before {
                     content: "";
                     position: absolute;

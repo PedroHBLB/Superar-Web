@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
+
 import { Search } from "../../components/Search";
 import { Table } from '../../components/Table';
+
 import './styles.css';
 
 export function ValidationTable() {
@@ -13,7 +15,7 @@ export function ValidationTable() {
   }
 
   function datas() {
-    let url = "http://192.168.11.84:3000/colaborador/screen/"
+    let url = "http://177.190.201.227:3000/colaborador/screen/"
     fetch(url)
       .then((response) => response.json())
       .then((json) => setData(json))
@@ -38,8 +40,8 @@ export function ValidationTable() {
       {filteredData.length > 0 && (
         <Table filteredData={filteredData} />
       )}
-      {filteredData.length === 0 && (
-        <h2 style={{textAlign: 'center'}}>No Data</h2>
+      {data.length === 0 && (
+        <h2 style={{ textAlign: 'center' }}>No Data</h2>
       )}
     </div>
 
