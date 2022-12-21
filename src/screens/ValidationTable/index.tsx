@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Search } from "../../components/Search";
+import { Table } from '../../components/Table';
 import './styles.css';
 
 export function ValidationTable() {
@@ -21,9 +22,9 @@ export function ValidationTable() {
 
   const filteredData = !!searchValue
     ? data.filter((post: any) => {
-      return post.nome.toLowerCase().includes(searchValue.toLowerCase()) 
-      || post.email.toLowerCase().includes(searchValue.toLowerCase())
-      || post.setor.toLowerCase().includes(searchValue.toLowerCase());
+      return post.nome.toLowerCase().includes(searchValue.toLowerCase())
+        || post.email.toLowerCase().includes(searchValue.toLowerCase())
+        || post.setor.toLowerCase().includes(searchValue.toLowerCase());
     }) :
     data
 
@@ -33,37 +34,12 @@ export function ValidationTable() {
 
   return (
     <div>
-      <div>
-        {!!searchValue && (
-          <h1>Pesquisa: {searchValue}</h1>
-        )}
-        <Search searchValue={searchValue} handleChange={handleChange} />
-      </div>
+      <Search searchValue={searchValue} handleChange={handleChange} />
       {filteredData.length > 0 && (
-        <div>
-          <table className="tabela">
-            <thead>
-              <tr>
-                <th>Nome</th>
-                <th>Email</th>
-                <th>Setor</th>
-                <th>Opções</th>
-              </tr>
-            </thead>
-            <tbody>
-              {filteredData.map((post: any) => {
-                return <tr key={post.id}>
-                  <td>{post.nome}</td>
-                  <td>{post.email}</td>
-                  <td>{post.setor}</td>
-                </tr>
-              })}
-            </tbody>
-          </table>
-        </div>
+        <Table filteredData={filteredData} />
       )}
       {filteredData.length === 0 && (
-        <h2>No Data</h2>
+        <h2 style={{textAlign: 'center'}}>No Data</h2>
       )}
     </div>
 

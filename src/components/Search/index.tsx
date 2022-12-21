@@ -1,6 +1,8 @@
+import { Pesquisa } from "./styles"
+
 export const Search = ({ searchValue, handleChange }: any) =>{
     return (
-        <input
+        <Pesquisa
             className='text-input'
             onChange={handleChange}
             value={searchValue}
